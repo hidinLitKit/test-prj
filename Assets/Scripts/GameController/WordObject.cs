@@ -9,7 +9,7 @@ public class WordObject : MonoBehaviour
     [SerializeField] private TextMeshPro _displayTxt;
     private WordData _word;
     private bool _visible = true;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && _visible)
         {

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float _hp = 3f;
+    private void OnEnable()
     {
-        
+        GameEvents.onFailure += Damage;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        GameEvents.onFailure -= Damage;
+    }
+    private void Damage()
+    {
+        _hp--;
+        if (_hp <= 0) Debug.Log("ÏÎÐÀÆÅÍÈÅ");
     }
 }

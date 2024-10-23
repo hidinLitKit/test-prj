@@ -17,9 +17,10 @@ public class WordController : MonoBehaviour
     public WordData CurrentWord => _currentWord;
     public WordData RandomWord => _words.RandomWord();
     public event System.Action<bool> onTimer;
+    public event System.Action<string> onCurrentWord;
     
     [SerializeField] private WordDatabase _words;
-    [SerializeField] private float _coolDown = 5f;
+    [SerializeField] private float _coolDown = 3f;
 
     private WordData _currentWord;
     private void OnEnable()
@@ -27,6 +28,10 @@ public class WordController : MonoBehaviour
         _currentWord = _words.RandomWord();
         GameEvents.onCorrect += CorrectSequence;
         GameEvents.onFailure += WrongSequence;
+    }
+    private void Start()
+    {
+        onCurrentWord?.Invoke(_currentWord._englishWord);
     }
     private void OnDisable()
     {
@@ -45,6 +50,8 @@ public class WordController : MonoBehaviour
     {
         onTimer?.Invoke(true);
         yield return new WaitForSeconds(_coolDown);
+        _currentWord = _words.RandomWord();
+        onCurrentWord?.Invoke(_currentWord._englishWord);
         onTimer?.Invoke(false);
     }
 

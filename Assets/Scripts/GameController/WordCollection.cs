@@ -25,7 +25,7 @@ public class WordCollection : MonoBehaviour
     }
     private void DisplayObject(bool val)
     {
-        foreach (WordObject word in words) word.SetVisibility(val);
+        foreach (WordObject word in words) word.SetVisibility(!val);
     }
     private void PlacementGen()
     {

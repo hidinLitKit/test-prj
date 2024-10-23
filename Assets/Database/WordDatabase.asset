@@ -16,3 +16,12 @@ MonoBehaviour:
   - _englishWord: table
     _russianWord: "\u0441\u0442\u043E\u043B"
     _index: 0
+  - _englishWord: chair
+    _russianWord: "\u0441\u0442\u0443\u043B"
+    _index: 1
+  - _englishWord: apple
+    _russianWord: "\u044F\u0431\u043B\u043E\u043A\u043E"
+    _index: 2
+  - _englishWord: banana
+    _russianWord: "\u0431\u0430\u043D\u0430"
+    _index: 3
