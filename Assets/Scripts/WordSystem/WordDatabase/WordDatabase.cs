@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WordDatabase : MonoBehaviour
+[CreateAssetMenu(fileName = "WordDatabase")]
+public class WordDatabase : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<WordData> database;
+    public WordData RandomWord()
     {
-        
+        return database[Random.Range(0, database.Count - 1)];
     }
-
-    // Update is called once per frame
-    void Update()
+    public WordData GetCurrent(WordData _previous)
     {
-        
+        return database[Random.Range(0, database.Count - 1)];
     }
 }
+
+[System.Serializable]
+public class WordData
+{
+    public string _englishWord;
+    public string _russianWord;
+    public string _index;
+}
+

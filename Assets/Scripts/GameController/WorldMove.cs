@@ -16,7 +16,7 @@ public class WorldMove : MonoBehaviour
 
     public bool CanMove => _canMove;
 
-    [SerializeField] private List<GameObject> _objects = new List<GameObject>();
+    [SerializeField] private List<WordCollection> _objects = new List<WordCollection>();
     [SerializeField] private GameObject _objPrefab;
     [SerializeField] private float _moveSpeed;
     private bool _canMove = true;
@@ -36,28 +36,34 @@ public class WorldMove : MonoBehaviour
 
     public void AddObject()
     {
-        _objects.Add(SpawnObject());
+        WordCollection _spawnObj = SpawnObject().GetComponent<WordCollection>();
+        _objects.Add(_spawnObj);
+        if (_objects.Count > 3) DeleteObject();
     }
     public void DeleteObject()
     {
+        GameObject obj = _objects[0].gameObject;
         _objects.RemoveAt(0);
+        Destroy(obj);
     }
     public void SetMove(bool val)
     {
         _canMove = val;
     }
-
-    
     
     private GameObject SpawnObject()
     {
-        return Instantiate(_objPrefab, 
-            _objects[-1].transform.position + new Vector3(1920f, 0f, 0f),
-            _objPrefab.transform.rotation);
+        GameObject obj = Instantiate(_objPrefab);
+
+        obj.transform.parent = this.gameObject.transform;
+        obj.transform.localPosition = _objects[_objects.Count - 1].transform.localPosition + new Vector3(36.21907f, 0f, 0f);
+
+        return obj;
+
     }
     private void MoveWorld()
     {
-        transform.position += new Vector3(_moveSpeed * 1f, 0f, 0f);
+        transform.position += new Vector3(-_moveSpeed * 1f*Time.deltaTime, 0f, 0f);
     }
     
 
