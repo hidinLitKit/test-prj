@@ -7,6 +7,7 @@ public class WordObject : MonoBehaviour
 {
     [SerializeField] private GameObject _active;
     [SerializeField] private TextMeshPro _displayTxt;
+    [SerializeField] private Animator _cloudAnimator;
     private WordData _word;
     private bool _visible = true;
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,5 +32,17 @@ public class WordObject : MonoBehaviour
     {
         _active.SetActive(val);
         _visible = val;
+        CloudEffect(val);
+    }
+    private void CloudEffect(bool val)
+    {
+        if(val)
+        {
+            _cloudAnimator.SetTrigger("Normal");
+        }
+        else
+        {
+            _cloudAnimator.SetTrigger("Destroy");
+        }
     }
 }

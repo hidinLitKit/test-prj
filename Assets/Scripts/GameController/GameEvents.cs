@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class GameEvents
 {
+    public static event Action<float, float> onUpdatePlayer;
     public static event Action onCheckPoint;
     public static event Action onCorrect;
     public static event Action onFailure;
@@ -18,5 +19,9 @@ public static class GameEvents
     public static void GotWrong()
     {
         onFailure?.Invoke();
+    }
+    public static void UpdatePlayer(float val1, float val2)
+    {
+        onUpdatePlayer?.Invoke(val1, val2);
     }
 }
