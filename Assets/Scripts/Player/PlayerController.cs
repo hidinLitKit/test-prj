@@ -9,9 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     private bool _canMove = true;
     private Vector2 _moveValue;
-    public void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        _moveValue = value.Get<Vector2>();
+        _moveValue = context.ReadValue<Vector2>();
+    }
+    public void OnExit(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            States.instance.Push<PauseState>();
     }
     void Update()
     {

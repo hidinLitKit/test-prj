@@ -715,12 +715,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2675126192489922913}
   m_Layer: 5
-  m_Name: DeathScreen (1)
+  m_Name: Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2675126192489922913
 RectTransform:
   m_ObjectHideFlags: 0

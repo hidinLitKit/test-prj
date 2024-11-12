@@ -24,15 +24,18 @@ public class Player : MonoBehaviour
         {
             _hp = 0;
             Debug.Log("œŒ–¿∆≈Õ»≈");
+            SFXManager.instance.PlaySound("Main", "Death");
             GameEvents.Death();
         }
         
         UpdatePlayer();
+        SFXManager.instance.PlaySound("Main", "Wrong");
     }
     private void Score()
     {
         _score++;
         UpdatePlayer();
+        SFXManager.instance.PlaySound("Main", "Correct");
     }
     private void UpdatePlayer()
     {

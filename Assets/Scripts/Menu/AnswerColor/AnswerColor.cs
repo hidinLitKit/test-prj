@@ -5,14 +5,22 @@ using UnityEngine;
 public class AnswerColor : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    private void OnEnable()
+    private void Awake()
     {
-        GameEvents.onCorrect += () => _animator.SetTrigger("Correct");
-        GameEvents.onFailure += () => _animator.SetTrigger("Wrong");
+        GameEvents.onCorrect += CorrectColor;
+        GameEvents.onFailure += WrongColor;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
-        GameEvents.onCorrect -= () => _animator.SetTrigger("Correct");
-        GameEvents.onFailure -= () => _animator.SetTrigger("Wrong");
+        GameEvents.onCorrect -= CorrectColor;
+        GameEvents.onFailure -= WrongColor;
+    }
+    void WrongColor()
+    {
+        _animator.SetTrigger("Wrong");
+    }
+    void CorrectColor()
+    {
+        _animator.SetTrigger("Correct");
     }
 }

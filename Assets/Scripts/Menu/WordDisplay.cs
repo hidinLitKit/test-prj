@@ -36,7 +36,8 @@ public class WordDisplay : MonoBehaviour
         while(_totalTime != 0)
         {
             _txt.text = $"{(int)(_totalTime)}...";
-            yield return new WaitForSeconds(time / 3);           
+            SFXManager.instance.PlaySound("Main", "Timer");
+            yield return new WaitForSeconds(time / 3);
             _totalTime--;
         }
         
