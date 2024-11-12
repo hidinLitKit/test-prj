@@ -16,6 +16,7 @@ public class WordController : MonoBehaviour
 
     public WordData CurrentWord => _currentWord;
     public WordData RandomWord => _words.RandomWord();
+    public float Cooldown => _coolDown;
     public event System.Action<bool> onTimer;
     public event System.Action<string> onCurrentWord;
     

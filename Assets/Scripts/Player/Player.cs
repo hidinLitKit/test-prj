@@ -20,8 +20,13 @@ public class Player : MonoBehaviour
     private void Damage()
     {
         _hp--;
-        if (_hp <= 0) _hp = 0;
-        Debug.Log("ÏÎÐÀÆÅÍÈÅ");
+        if (_hp <= 0)
+        {
+            _hp = 0;
+            Debug.Log("ÏÎÐÀÆÅÍÈÅ");
+            GameEvents.Death();
+        }
+        
         UpdatePlayer();
     }
     private void Score()

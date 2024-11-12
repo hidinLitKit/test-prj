@@ -8,6 +8,7 @@ public static class GameEvents
     public static event Action onCheckPoint;
     public static event Action onCorrect;
     public static event Action onFailure;
+    public static event Action onDeath;
     public static void CheckPoint()
     {
         onCheckPoint?.Invoke();
@@ -23,5 +24,9 @@ public static class GameEvents
     public static void UpdatePlayer(float val1, float val2)
     {
         onUpdatePlayer?.Invoke(val1, val2);
+    }
+    public static void Death()
+    {
+        onDeath?.Invoke();
     }
 }

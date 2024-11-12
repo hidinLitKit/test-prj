@@ -24,6 +24,7 @@ public class WorldMove : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.onCheckPoint += AddObject;
+        GameEvents.onDeath += () => SetMove(false);
     }
     private void Update()
     {
@@ -32,6 +33,7 @@ public class WorldMove : MonoBehaviour
     private void OnDisable()
     {
         GameEvents.onCheckPoint -= AddObject;
+        GameEvents.onDeath -= () => SetMove(false);
     }
 
     public void AddObject()
@@ -63,6 +65,7 @@ public class WorldMove : MonoBehaviour
     }
     private void MoveWorld()
     {
+        if (!_canMove) return;
         transform.position += new Vector3(-_moveSpeed * 1f*Time.deltaTime, 0f, 0f);
     }
     
